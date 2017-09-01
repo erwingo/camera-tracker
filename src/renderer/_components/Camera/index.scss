@@ -1,0 +1,19 @@
+.camera {
+  position: relative;
+
+  .camera__video,
+  .camera__overlay {
+    width: 100%;
+    max-height: 100%;
+  }
+
+  .camera__video {
+    display: block;
+  }
+
+  .camera__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

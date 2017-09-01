@@ -1,0 +1,75 @@
+{
+  "name": "camera-tacker",
+  "version": "1.0.0",
+  "productName": "Camera Tracker",
+  "description": "Detect movement in range and triggers an event",
+  "main": "src/main/index.js",
+  "config": {
+    "electronPackagerIgnore": "^/(src/renderer|config|(?!(|src|dist|package\\.json|LICENSE|node_modules)))"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run webpack",
+    "build-dev": "npm run clean && cross-env NODE_ENV=dev npm run webpack",
+    "clean": "find . -name '.DS_Store' | xargs rm -f ; rm -rf dist",
+    "lint": "echo TODO: Missing Lints",
+    "package-mac": "npm run test && npm run build && electron-packager . --platform=darwin --ignore=$npm_package_config_electronPackagerIgnore --out=products --icon=src/_images/logo.png.icns --asar",
+    "package-win": "npm run test && npm run build && electron-packager . --platform=win32 --ignore=$npm_package_config_electronPackagerIgnore --out=products --icon=src/_images/logo.ico --asar",
+    "start": "electron .",
+    "start-dev": "cross-env NODE_ENV=dev electron .",
+    "test": "mocha -r source-map-support/register --compilers ts-node/register {src/**/_tests.tsx,src/**/_tests/**/*.tsx}",
+    "webpack": "webpack --config config/webpack.config",
+    "webpack-dev-server": "cross-env NODE_ENV=dev webpack-dev-server --config config/webpack.config"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "dot-prop": "^4.2.0",
+    "electron-is-dev": "^0.3.0",
+    "fs-extra": "^4.0.1",
+    "lodash": "^4.17.4",
+    "pixelmatch": "^4.0.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-input-range": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.0",
+    "@types/dot-prop": "^4.1.0",
+    "@types/fs-extra": "^4.0.0",
+    "@types/lodash": "^4.14.72",
+    "@types/react": "^16.0.2",
+    "@types/react-dom": "^15.5.2",
+    "babel-loader": "^7.1.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.4",
+    "electron": "^1.6.12",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "mocha": "^3.5.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "source-map-support": "^0.4.15",
+    "style-loader": "^0.18.2",
+    "ts-loader": "^2.3.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2",
+    "webfonts-loader": "^2.0.2",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erwingo/camera-tracker.git"
+  },
+  "keywords": [
+    "music",
+    "player",
+    "electron"
+  ],
+  "author": "Erwin Gaitan O <erwingaitano@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/erwingo/camera-tracker/issues"
+  },
+  "homepage": "https://github.com/erwingo/camera-tracker#readme"
+}
